@@ -14,11 +14,12 @@
             font-family: 'Arial', sans-serif;
         }
 
-        #dashboardContainer, #loginForm, #settingsForm, #categorySelection {
+        #loginForm, #settingsForm, #categorySelection {
             width: 100%;
             height: 100%;
         }
 
+        /* Login Form */
         #loginForm {
             display: flex;
             flex-direction: column;
@@ -32,6 +33,7 @@
             overflow: hidden;
         }
 
+        /* Animated circles for Login */
         #loginForm::before, #loginForm::after {
             content: '';
             position: absolute;
@@ -121,6 +123,7 @@
             background: linear-gradient(135deg, #45a049, #4caf50);
         }
 
+        /* Settings Form */
         #settingsForm {
             display: none;
             text-align: center;
@@ -131,44 +134,14 @@
             align-items: center;
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow: hidden;
         }
 
+        /* Animated settings elements */
         #settingsForm select, #settingsForm button {
-            padding: 20px 40px; /* Increased size */
-            margin-top: 20px;
-            font-size: 18px; /* Larger font size */
-            border-radius: 8px;
-            border: none;
-            background-color: #ff5722; /* Bright orange for contrast */
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        #settingsForm select {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-
-        #settingsForm button:hover {
-            background-color: #e64a19; /* Darker shade on hover */
-        }
-
-        #categorySelection {
-            display: none;
-            text-align: center;
-            background: linear-gradient(135deg, #003973, #E5E5BE, #2C5364, #203A43);
-            color: white;
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            padding: 50px;
-        }
-
-        #categorySelection button {
-            margin-top: 20px;
             padding: 20px 40px;
+            margin-top: 20px;
             font-size: 18px;
             border-radius: 8px;
             border: none;
@@ -176,64 +149,47 @@
             color: white;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
-        #categorySelection button:hover {
+        #settingsForm select {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        #settingsForm button:hover {
             background-color: #e64a19;
+            transform: translateY(-5px);
         }
 
-        #dashboardContainer {
+        /* Category Selection Page */
+        #categorySelection {
             display: none;
-            position: relative;
-            width: 100%;
-            height: 100%;
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #003973, #E5E5BE, #2C5364, #203A43);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
         }
 
-        #whiteCover {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            background: white;
-            z-index: 10;
-        }
-
-        .tableauPlaceholder {
-            width: 100%;
-            height: 100%;
-        }
-
-        .tableauViz {
-            display: none;
-        }
-
-        .title {
-            font-size: 36px;
+        .category-button {
+            padding: 15px 30px;
+            margin-top: 20px;
+            font-size: 18px;
             font-weight: bold;
-            margin-bottom: 10px;
-            animation: fadeIn 2s ease-in-out;
-            color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            text-transform: uppercase;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        .subtitle {
-            font-size: 16px;
-            margin-bottom: 20px;
-            animation: fadeIn 3s ease-in-out;
-            color: #ffffff;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+        .category-button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
         }
 
         @keyframes gradientShift {
@@ -262,18 +218,12 @@
             }
         }
 
-        function goToSettings() {
+        function goToCategorySelection() {
             document.getElementById("settingsForm").style.display = "none";
             document.getElementById("categorySelection").style.display = "block";
         }
 
         function goToDashboard() {
-            const currency = document.getElementById("currency").value;
-            const language = document.getElementById("language").value;
-
-            console.log("Currency: " + currency);
-            console.log("Language: " + language);
-
             document.getElementById("categorySelection").style.display = "none";
             document.getElementById("dashboardContainer").style.display = "block";
         }
@@ -304,16 +254,17 @@
             <option value="en">English</option>
             <option value="ar">Arabic</option>
         </select>
-        <button onclick="goToSettings()">Go to Category Selection</button>
+        <button onclick="goToCategorySelection()">Next</button>
     </div>
 
     <!-- Category Selection Page -->
     <div id="categorySelection">
-        <div class="title">Choose Insurance Category</div>
-        <button onclick="goToDashboard()">Life</button>
-        <button onclick="goToDashboard()">General</button>
-        <button onclick="goToDashboard()">Investment</button>
-        <button onclick="goToDashboard()">Medical</button>
+        <div class="title">Select Insurance Category</div>
+        <div class="subtitle">Choose Your Desired Category</div>
+        <button class="category-button" onclick="goToDashboard()">Life</button>
+        <button class="category-button" onclick="goToDashboard()">General</button>
+        <button class="category-button" onclick="goToDashboard()">Investment</button>
+        <button class="category-button" onclick="goToDashboard()">Medical</button>
     </div>
 
     <!-- Tableau Dashboard -->
