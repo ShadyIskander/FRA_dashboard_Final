@@ -134,23 +134,24 @@
         }
 
         #settingsForm select, #settingsForm button {
-            padding: 10px;
+            padding: 20px 40px; /* Increased size */
             margin-top: 20px;
-            font-size: 16px;
-            border-radius: 4px;
+            font-size: 18px; /* Larger font size */
+            border-radius: 8px;
             border: none;
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: #ff5722; /* Bright orange for contrast */
             color: white;
-        }
-
-        #settingsForm button {
-            background-color: #4caf50;
+            font-weight: bold;
             cursor: pointer;
             transition: background 0.3s ease;
         }
 
+        #settingsForm select {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
         #settingsForm button:hover {
-            background-color: #45a049;
+            background-color: #e64a19; /* Darker shade on hover */
         }
 
         #dashboardContainer {
