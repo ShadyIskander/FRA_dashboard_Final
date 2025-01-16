@@ -14,7 +14,7 @@
             font-family: 'Arial', sans-serif;
         }
 
-        #dashboardContainer, #loginForm, #settingsForm {
+        #dashboardContainer, #loginForm, #settingsForm, #categorySelection {
             width: 100%;
             height: 100%;
         }
@@ -154,6 +154,35 @@
             background-color: #e64a19; /* Darker shade on hover */
         }
 
+        #categorySelection {
+            display: none;
+            text-align: center;
+            background: linear-gradient(135deg, #003973, #E5E5BE, #2C5364, #203A43);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            padding: 50px;
+        }
+
+        #categorySelection button {
+            margin-top: 20px;
+            padding: 20px 40px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: none;
+            background-color: #ff5722;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #categorySelection button:hover {
+            background-color: #e64a19;
+        }
+
         #dashboardContainer {
             display: none;
             position: relative;
@@ -233,6 +262,11 @@
             }
         }
 
+        function goToSettings() {
+            document.getElementById("settingsForm").style.display = "none";
+            document.getElementById("categorySelection").style.display = "block";
+        }
+
         function goToDashboard() {
             const currency = document.getElementById("currency").value;
             const language = document.getElementById("language").value;
@@ -240,7 +274,7 @@
             console.log("Currency: " + currency);
             console.log("Language: " + language);
 
-            document.getElementById("settingsForm").style.display = "none";
+            document.getElementById("categorySelection").style.display = "none";
             document.getElementById("dashboardContainer").style.display = "block";
         }
     </script>
@@ -270,7 +304,16 @@
             <option value="en">English</option>
             <option value="ar">Arabic</option>
         </select>
-        <button onclick="goToDashboard()">Go to Dashboard</button>
+        <button onclick="goToSettings()">Go to Category Selection</button>
+    </div>
+
+    <!-- Category Selection Page -->
+    <div id="categorySelection">
+        <div class="title">Choose Insurance Category</div>
+        <button onclick="goToDashboard()">Life</button>
+        <button onclick="goToDashboard()">General</button>
+        <button onclick="goToDashboard()">Investment</button>
+        <button onclick="goToDashboard()">Medical</button>
     </div>
 
     <!-- Tableau Dashboard -->
