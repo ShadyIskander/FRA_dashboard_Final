@@ -33,38 +33,6 @@
             overflow: hidden;
         }
 
-        /* Animated circles for Login */
-        #loginForm::before, #loginForm::after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s infinite ease-in-out;
-        }
-
-        #loginForm::before {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        #loginForm::after {
-            bottom: 20%;
-            right: 10%;
-            animation-delay: 3s;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
         #loginForm form {
             text-align: center;
             max-width: 300px;
@@ -75,7 +43,6 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            z-index: 1;
         }
 
         #loginForm form h1 {
@@ -95,11 +62,6 @@
             background: rgba(255, 255, 255, 0.1);
             color: white;
             font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        #loginForm form input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
         }
 
         #loginForm form input:focus {
@@ -114,9 +76,7 @@
             color: white;
             border: none;
             cursor: pointer;
-            transition: background 0.3s ease;
             font-weight: bold;
-            letter-spacing: 1px;
         }
 
         #loginForm form input[type="submit"]:hover {
@@ -126,9 +86,8 @@
         /* Settings Form */
         #settingsForm {
             display: none;
-            background: #212121; /* Dark background */
+            background: #121212; /* Darker background */
             height: 100%;
-            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -136,20 +95,20 @@
             padding: 0 20px;
         }
 
-        /* Animated settings elements */
+        /* Settings buttons and inputs full width */
         #settingsForm select, #settingsForm button {
             padding: 40px;
             margin-top: 30px;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
             border-radius: 12px;
             border: none;
             background-color: #ff5722;
             color: white;
             cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s ease;
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
         #settingsForm select {
@@ -164,7 +123,7 @@
         /* Category Selection Page */
         #categorySelection {
             display: none;
-            background: #212121; /* Dark background */
+            background: #121212; /* Darker background */
             color: white;
             height: 100%;
             display: flex;
@@ -184,9 +143,9 @@
             border: none;
             border-radius: 12px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
             width: 100%;
             max-width: 500px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .category-button:hover {
